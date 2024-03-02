@@ -1,38 +1,31 @@
-package utils;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 public class MyDB {
-    final String url="jdbc:mysql://localhost:3306/pidev";
-    final String username="root";
-    final String pwd="";
-    private Connection conx;
 
+    public final String URL = "jdbc:mysql://localhost:3306/pidev";
+    public final String USERNAME = "root";
+    public final String PWD = "";
+    private Connection connection;
+
+    // Create a variable of type MyDB for the instance
     public static MyDB instance;
 
-
-    public static MyDB getInstance(){
-        if (instance == null)
-            instance = new MyDB();
-        return instance;
-
-    }
-    MyDB(){
-
+    // Make the constructor private
+    private MyDB() {
         try {
-            conx = DriverManager.getConnection(url, username, pwd);
-            System.out.println("connected successfully");
+            connection = DriverManager.getConnection(URL, USERNAME, PWD);
+            System.out.println("Connected successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
-
-
     }
 
-    public Connection getConx() {
-        return conx;
+    // Create a method getInstance
+    public static MyDB getInstance() {
+        if (instance == null)
+            instance = new MyDB();
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

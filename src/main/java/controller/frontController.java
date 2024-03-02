@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import test.MainFx;
@@ -21,31 +22,71 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class frontController implements Initializable {
+
     @FXML
     private ImageView achatIcon;
 
     @FXML
-    private ImageView adminIMG;
+    private HBox achatBtn;
 
     @FXML
     private ImageView commandsIcon;
 
     @FXML
+    private HBox commandsBtn;
+
+    @FXML
     private ImageView dashboardIcon;
+
+    private HBox dashboardBtn;
+
+    @FXML
+    private ImageView dashboardIcon;
+
+    @FXML
+    private HBox fundrisingBtn;
+
+    @FXML
+    private HBox productsBtn;
 
     @FXML
     private ImageView productsIcon;
 
     @FXML
-    private Label titre_dash;
+    private HBox profileBtn;
 
     @FXML
-    private Label username;
+    private ImageView profileIcon;
+
+    @FXML
+    private HBox sideBarLogout;
+    @FXML
+    private Pane content_area;
+
+
+    @FXML
+    private HBox dashboardBtn;
+
+    @FXML
+    private ImageView productsIcon;
+
+    @FXML
+    private HBox productsBtn;
+
+    @FXML
+    private ImageView profileIcon;
+
+    @FXML
+    private HBox profileBtn;
+
+    @FXML
+    private HBox sideBarLogout;
+
     @FXML
     private VBox pnItems;
 
-
     public void initialize(URL location, ResourceBundle resources) {
+ {
 
         System.out.println(MainFx.m);
         if(MainFx.m == 0){
@@ -149,8 +190,10 @@ public class frontController implements Initializable {
             }
 
         }
+        }
+}
 
-    }
+
 
     @FXML
     void profile(ActionEvent event) throws IOException {
@@ -183,8 +226,9 @@ public class frontController implements Initializable {
                     nodes[0].setStyle("-fx-background-color : #02030A");
                 });*/
         pnItems.getChildren().add(nodes[0]);
-
     }
+
+
     @FXML
     void SignOut(ActionEvent event) {
         pnItems.getChildren().clear();
@@ -199,6 +243,35 @@ public class frontController implements Initializable {
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+    
+
+    @FXML
+    void open_dashboard(MouseEvent event) {
+        // Your implementation for opening the dashboard...
+    }
+
+    @FXML
+    void open_productsList(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/listeproduit.fxml"));
+        content_area.getChildren().removeAll();
+        content_area.getChildren().setAll(fxml);    }
+
+    @FXML
+    void open_commandsList(MouseEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/ListePanier.fxml"));
+        content_area.getChildren().removeAll();
+        content_area.getChildren().setAll(fxml);    }
+
+    @FXML
+    void open_profile(MouseEvent event) {
+        // Your implementation for opening the profile...
+    }
+
+    @FXML
+    void logout(MouseEvent event) {
+        // Your implementation for logging out...
     }
 
 }
